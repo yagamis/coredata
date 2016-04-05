@@ -38,7 +38,8 @@ class AddRestaurantController: UITableViewController,UIImagePickerControllerDele
         restaurant.type = type.text!
         restaurant.location = location.text!
         if let image = imageView.image {
-            restaurant.image = UIImagePNGRepresentation(image)
+            let salFac = image.size.width > 600 ? 600 / image.size.width : 1
+            restaurant.image = UIImageJPEGRepresentation(image, salFac)
         }
         restaurant.isVisited = isVisited
         
